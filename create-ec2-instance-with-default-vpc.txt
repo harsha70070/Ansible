@@ -1,0 +1,25 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: Provision a set of instances
+      ec2:
+         aws_access_key: AKIASBYTRLDP
+         aws_secret_key: posrW8WcckjbsKLPSIu4nD3QNNfL1de/G
+         key_name: ansible-node
+         group: test
+         instance_type: t2.micro
+         image: ami-0747bdcabd34c712a
+         region: us-east-1
+         wait: true
+         exact_count: 1
+         count_tag:
+            Name: Demo
+         instance_tags:
+            Name: Demo
+      register: ec2_info
+
+    - debug:
+        msg: "{{ec2_info}}"
