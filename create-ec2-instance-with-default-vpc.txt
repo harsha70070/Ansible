@@ -18,6 +18,3 @@
          instance_tags:
             Name: Demo
       register: ec2_info
-
-    - debug:
-        msg: "{{ec2_info}}"
